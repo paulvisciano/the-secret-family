@@ -421,13 +421,18 @@
 
   /* Mobile */
   @media (max-width: 768px) {
-    #side-panel { width: 100vw; box-shadow: none; }
+    #side-panel {
+      width: 100vw; height: 62vh; top: auto; bottom: 0;
+      border-left: none; border-top: 1px solid rgba(255,255,255,0.1);
+      transform: translateY(100%); box-shadow: 0 -12px 40px rgba(0,0,0,0.6);
+    }
+    #side-panel.open { transform: translateY(0); }
     #legend { max-width: 180px; font-size: 12px; }
     #title-block { top: 14px; }
     #title-block h1 { font-size: 22px; }
     #title-block p { font-size: 12px; }
     #search-box {
-      top: 80px; left: 14px; right: 14px; width: auto;
+      top: 100px; left: 14px; right: 14px; width: auto;
     }
     #bottom-bar { right: 14px; bottom: 14px; }
     #reset-view { padding: 7px 14px; font-size: 12px; }
