@@ -2,6 +2,8 @@
 
 Interactive D3.js visualization mapping the power hierarchy of ~60 people discussed in Professor Jiang's YouTube interview.
 
+![The Secret Family](screenshot.png)
+
 **Live site:** Open `index.html` in any browser — no server, no build step, no dependencies.
 
 ## What it shows
