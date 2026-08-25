@@ -419,21 +419,53 @@
   }
   .edge-label.show { opacity: 1; }
 
+  /* Search collapsed (mobile) */
+  #search-toggle {
+    display: none;
+    width: 42px; height: 42px; border-radius: 6px;
+    background: rgba(26,26,26,0.9); border: 1px solid var(--border);
+    color: var(--text); font-size: 18px; cursor: pointer;
+    align-items: center; justify-content: center; flex-shrink: 0;
+    backdrop-filter: blur(4px); transition: border-color 0.15s;
+  }
+  #search-toggle:hover { border-color: var(--accent); }
+  #side-panel .drag-handle { display: none; }
+
   /* Mobile */
   @media (max-width: 768px) {
     #side-panel {
-      width: 100vw; height: 62vh; top: auto; bottom: 0;
+      width: 100vw; height: 90vh; top: auto; bottom: 0;
       border-left: none; border-top: 1px solid rgba(255,255,255,0.1);
       transform: translateY(100%); box-shadow: 0 -12px 40px rgba(0,0,0,0.6);
+      will-change: transform;
     }
-    #side-panel.open { transform: translateY(0); }
+    #side-panel.open { transform: translateY(55vh); }
+    #side-panel.expanded { transform: translateY(0); }
+    #side-panel .drag-handle {
+      display: flex; width: 100%; padding: 8px 0 4px;
+      align-items: center; justify-content: center; cursor: grab;
+      flex-shrink: 0;
+    }
+    #side-panel .drag-handle:active { cursor: grabbing; }
+    #side-panel .drag-handle::after {
+      content: ''; width: 40px; height: 4px; border-radius: 2px;
+      background: #555;
+    }
     #legend { max-width: 180px; font-size: 12px; }
     #title-block { top: 14px; }
     #title-block h1 { font-size: 22px; }
     #title-block p { font-size: 12px; }
     #search-box {
       top: 100px; left: 14px; right: 14px; width: auto;
+      display: flex; gap: 8px; align-items: flex-start;
     }
+    #search-input { display: none; }
+    #search-results { display: none; }
+    #search-toggle { display: flex; }
+    #search-box.expanded #search-input {
+      display: block; flex: 1; width: auto;
+    }
+    #search-box.expanded #search-toggle { display: none; }
     #bottom-bar { right: 14px; bottom: 14px; }
     #reset-view { padding: 7px 14px; font-size: 12px; }
     #about-toggle { padding: 7px 14px; font-size: 12px; }
@@ -458,6 +490,7 @@
 <svg class="graph" id="graph"></svg>
 
 <div id="search-box">
+  <button id="search-toggle" type="button" aria-label="Search">🔍</button>
   <input id="search-input" type="text" placeholder="Search by name…" autocomplete="off" spellcheck="false" />
   <div id="search-results"></div>
 </div>
@@ -496,6 +529,7 @@
 </div>
 
 <div id="side-panel">
+  <div class="drag-handle" id="drag-handle"></div>
   <div class="sp-header">
     <div class="file-meta">
       <span class="file-classification">Classified Dossier</span>
@@ -893,7 +927,7 @@ document.getElementById('sp-close').addEventListener('click', () => {
   reset();
 });
 
-function closePanel() { panel.classList.remove('open'); }
+function closePanel() { panel.classList.remove('open'); panel.classList.remove('expanded'); }
 
 // Era color mapping for the dossier banner
 const ERA_COLORS_DOSSIER = {
@@ -1102,9 +1136,17 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// ---- Mobile: search toggle + panel drag-to-expand ----
+const searchBox = document.getElementById('search-box');
+const searchToggle = document.getElementById('search-toggle');
+const dragHandle = document.getElementById('drag-handle');
+
 document.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
     e.preventDefault();
+    if (window.innerWidth <= 768) {
+      searchBox.classList.add('expanded');
+    }
     searchInput.focus();
     searchInput.select();
   }
@@ -1113,6 +1155,59 @@ document.addEventListener('keydown', (e) => {
     reset();
   }
 });
+
+searchToggle.addEventListener('click', () => {
+  const isExpanded = searchBox.classList.toggle('expanded');
+  if (isExpanded) { searchInput.focus(); }
+});
+
+searchInput.addEventListener('blur', () => {
+  if (window.innerWidth <= 768 && !searchInput.value) {
+    searchBox.classList.remove('expanded');
+    searchResults.classList.remove('show');
+  }
+});
+
+// Drag handle: pull panel up / push down
+(function () {
+  let startY = 0, currentY = 0, dragging = false;
+  const panelEl = document.getElementById('side-panel');
+  const PEEK = 55; // vh revealed when open (peek)
+
+  dragHandle.addEventListener('touchstart', (e) => {
+    dragging = true;
+    startY = e.touches[0].clientY;
+    currentY = startY;
+    panelEl.style.transition = 'none';
+  }, { passive: true });
+
+  dragHandle.addEventListener('touchmove', (e) => {
+    if (!dragging) return;
+    currentY = e.touches[0].clientY;
+    const dy = startY - currentY; // up = positive
+    const peekPx = PEEK * window.innerHeight / 100;
+    const offset = peekPx + dy;
+    const maxH = window.innerHeight;
+    panelEl.style.transform = `translateY(${Math.max(maxH - Math.max(offset, 0), 0)}px)`;
+  }, { passive: true });
+
+  dragHandle.addEventListener('touchend', () => {
+    if (!dragging) return;
+    dragging = false;
+    panelEl.style.transition = '';
+    const dy = startY - currentY;
+    if (dy > 50) {
+      panelEl.classList.add('expanded');
+    } else if (dy < -50) {
+      panelEl.classList.remove('expanded');
+    }
+  });
+
+  dragHandle.addEventListener('click', () => {
+    if (dragging) return;
+    panelEl.classList.toggle('expanded');
+  });
+})();
 
 // ---- Resize ----
 window.addEventListener('resize', () => {
