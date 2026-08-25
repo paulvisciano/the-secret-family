@@ -24,8 +24,6 @@ Click any person to highlight their connections and open an intelligence dossier
 
 - **Search by name** — Ctrl+F or use the search box (top-right)
 - **Pan & zoom** — drag to pan, scroll to zoom, drag avatars to reposition
-- **Loading screen** — graph settles before display, centered on Tier 1
-- **Responsive** — works on mobile
 
 ## Source
 
