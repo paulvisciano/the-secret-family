@@ -1,0 +1,212 @@
+[
+  {
+    "source": "Donald Trump",
+    "target": "Jared Kushner",
+    "label": "son-in-law",
+    "source_ref": "2:07:23"
+  },
+  {
+    "source": "Jared Kushner",
+    "target": "Charles Kushner",
+    "label": "father",
+    "source_ref": "2:06:13"
+  },
+  {
+    "source": "Ivanka Trump",
+    "target": "Donald Trump",
+    "label": "daughter",
+    "source_ref": "2:37:03"
+  },
+  {
+    "source": "Sara Netanyahu",
+    "target": "Benjamin Netanyahu",
+    "label": "spouse",
+    "source_ref": "1:20:08"
+  },
+  {
+    "source": "Benjamin Netanyahu",
+    "target": "Rabbi Menachem Mendel Schneerson",
+    "label": "sought blessing",
+    "source_ref": "1:44:50"
+  },
+  {
+    "source": "Donald Trump",
+    "target": "Rabbi Menachem Mendel Schneerson",
+    "label": "sought blessing",
+    "source_ref": "2:07:23"
+  },
+  {
+    "source": "Jared Kushner",
+    "target": "Rabbi Menachem Mendel Schneerson",
+    "label": "Chabad member",
+    "source_ref": "2:06:13"
+  },
+  {
+    "source": "Sheldon Adelson",
+    "target": "Rabbi Menachem Mendel Schneerson",
+    "label": "donor",
+    "source_ref": "1:47:47"
+  },
+  {
+    "source": "Miriam Adelson",
+    "target": "Rabbi Menachem Mendel Schneerson",
+    "label": "donor",
+    "source_ref": "1:47:47"
+  },
+  {
+    "source": "Alan Dershowitz",
+    "target": "Jared Kushner",
+    "label": "Harvard Chabad",
+    "source_ref": "2:03:12"
+  },
+  {
+    "source": "Benjamin Netanyahu",
+    "target": "Charles Kushner",
+    "label": "close allies",
+    "source_ref": "2:06:13"
+  },
+  {
+    "source": "Louis Brandeis",
+    "target": "Rabbi Menachem Mendel Schneerson",
+    "label": "brought to America",
+    "source_ref": "1:35:46"
+  },
+  {
+    "source": "Jeffrey Epstein",
+    "target": "Robert Maxwell",
+    "label": "associate",
+    "source_ref": "3:40:44"
+  },
+  {
+    "source": "Ghislaine Maxwell",
+    "target": "Robert Maxwell",
+    "label": "daughter",
+    "source_ref": "3:41:28"
+  },
+  {
+    "source": "Jeffrey Epstein",
+    "target": "Ghislaine Maxwell",
+    "label": "partner",
+    "source_ref": "3:41:35"
+  },
+  {
+    "source": "Jeffrey Epstein",
+    "target": "Bill Clinton",
+    "label": "associate",
+    "source_ref": "3:43:15"
+  },
+  {
+    "source": "Jeffrey Epstein",
+    "target": "Donald Trump",
+    "label": "associate",
+    "source_ref": "2:46:17"
+  },
+  {
+    "source": "Jeffrey Epstein",
+    "target": "Rothschild family",
+    "label": "elite family (per email)",
+    "source_ref": "3:31:17"
+  },
+  {
+    "source": "Mark Zuckerberg",
+    "target": "Rabbi Menachem Mendel Schneerson",
+    "label": "sought blessing (per Jiang)",
+    "source_ref": "1:56:40"
+  },
+  {
+    "source": "Mark Zuckerberg",
+    "target": "Jared Kushner",
+    "label": "Cambridge Analytica",
+    "source_ref": "2:04:47"
+  },
+  {
+    "source": "Rupert Murdoch",
+    "target": "Elena Zhukova",
+    "label": "married",
+    "source_ref": "1:49:38"
+  },
+  {
+    "source": "Jeff Bezos",
+    "target": "Donald Trump",
+    "label": "untouchable by (per Jiang)",
+    "source_ref": "40:55"
+  },
+  {
+    "source": "Henry Jackson",
+    "target": "Paul Wolfowitz",
+    "label": "mentor",
+    "source_ref": "1:23:26"
+  },
+  {
+    "source": "Henry Jackson",
+    "target": "Richard Perle",
+    "label": "mentor",
+    "source_ref": "1:23:22"
+  },
+  {
+    "source": "Douglas Feith",
+    "target": "Richard Perle",
+    "label": "co-authored Clean Break memo",
+    "source_ref": "1:23:04"
+  },
+  {
+    "source": "Richard Perle",
+    "target": "Benjamin Netanyahu",
+    "label": "advised (Clean Break memo)",
+    "source_ref": "1:20:08"
+  },
+  {
+    "source": "Douglas Feith",
+    "target": "Benjamin Netanyahu",
+    "label": "advised (Clean Break memo)",
+    "source_ref": "1:20:08"
+  },
+  {
+    "source": "Richard Perle",
+    "target": "George Bush",
+    "label": "Iraq War architect",
+    "source_ref": "1:23:13"
+  },
+  {
+    "source": "Sabbatai Zevi",
+    "target": "Jacob Frank",
+    "label": "successor movement",
+    "source_ref": "3:30:12"
+  },
+  {
+    "source": "Jacob Frank",
+    "target": "Rothschild family",
+    "label": "converted to Frankism",
+    "source_ref": "3:30:56"
+  },
+  {
+    "source": "Jacob Frank",
+    "target": "Rabbi Menachem Mendel Schneerson",
+    "label": "reincarnation (per believers)",
+    "source_ref": "3:32:40"
+  },
+  {
+    "source": "Donald Trump",
+    "target": "Benjamin Netanyahu",
+    "label": "alliance",
+    "source_ref": "2:45:55"
+  },
+  {
+    "source": "Vladimir Putin",
+    "target": "Rabbi Menachem Mendel Schneerson",
+    "label": "Chabad alliance (per Jiang)",
+    "source_ref": "2:40:02"
+  },
+  {
+    "source": "Sheldon Adelson",
+    "target": "Benjamin Netanyahu",
+    "label": "donor",
+    "source_ref": "1:47:52"
+  },
+  {
+    "source": "Sheldon Adelson",
+    "target": "Donald Trump",
+    "label": "donor",
+    "source_ref": "1:48:22"
+  }
+]
