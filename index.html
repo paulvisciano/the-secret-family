@@ -26,8 +26,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  svg.graph { display: block; width: 100vw; height: 100vh; cursor: grab; }
+  svg.graph { display: block; width: 100vw; height: 100vh; cursor: grab; touch-action: none; }
   svg.graph:active { cursor: grabbing; }
+  #side-panel { touch-action: pan-y; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+  #side-panel .drag-handle { touch-action: none; }
+  .node { touch-action: none; }
 
   /* Title block */
   #title-block {
@@ -812,14 +815,26 @@ const zoom = d3.zoom()
     gNodes.attr('transform', t);
   });
 svg.call(zoom);
+// Prevent zoom from capturing touches that start on a node
+svg.on('touchstart.capture', function(event) {
+  const target = event.target;
+  if (target.closest('.node')) {
+    event.stopImmediatePropagation();
+  }
+}, { capture: true });
 
-// ---- Drag ----
+// ---- Drag (with tap threshold so touch taps don't trigger node drag) ----
+let didDrag = false;
 node.call(d3.drag()
   .on('start', (event, d) => {
     if (!event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x; d.fy = d.y;
+    didDrag = false;
   })
-  .on('drag', (event, d) => { d.fx = event.x; d.fy = event.y; })
+  .on('drag', (event, d) => {
+    d.fx = event.x; d.fy = event.y;
+    didDrag = true;
+  })
   .on('end', (event, d) => {
     if (!event.active) simulation.alphaTarget(0);
     d.fx = event.x; d.fy = event.y;
@@ -910,13 +925,20 @@ function reset() {
 
 node.on('click', function(event, d) {
   event.stopPropagation();
+  if (didDrag) { didDrag = false; return; }
   selectedId = d.id;
   highlight(d.id);
   openPanel(d.id);
 });
 
+let didPan = false;
+svg.on('mousedown', () => { didPan = false; });
+svg.on('mousemove', () => { didPan = true; });
+svg.on('touchstart', () => { didPan = false; });
+svg.on('touchmove', () => { didPan = true; });
 svg.on('click', function(event) {
-  // Only reset when clicking the bare SVG background
+  // Only reset when clicking the bare SVG background (not after panning)
+  if (didPan) { didPan = false; return; }
   if (event.target === svg.node() || event.target.tagName === 'svg') {
     reset();
   }
