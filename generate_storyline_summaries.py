@@ -1,138 +1,223 @@
 #!/usr/bin/env python3
-"""Generate storyline_summary for each person based on transcript sources + Wikipedia.
-
-For each person, produces a 2-4 sentence summary that:
-1. Identifies who they are (from Wikipedia description/summary)
-2. Describes their role in the interview's narrative (from transcript source contexts)
-
-Outputs updated people_data.json with a new 'storyline_summary' field.
-Uses only standard library.
-"""
+"""Generate storyline_summary for each person from connections + Wikipedia data."""
 import json
 import os
 import re
+from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-def load_data():
-    with open(os.path.join(HERE, "people_data.json"), "r", encoding="utf-8") as f:
+def load_json(name):
+    with open(os.path.join(HERE, name), "r", encoding="utf-8") as f:
         return json.load(f)
 
-def clean_context(text):
-    """Clean up a transcript context snippet."""
-    # Remove timestamp prefixes
-    text = re.sub(r'^\d+:\d+(?::\d+)?\s*-\s*', '', text)
-    # Collapse whitespace
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text
+def build_adjacency(curated, connections):
+    adj = defaultdict(list)
+    for e in curated:
+        label = e.get('label', '')
+        adj[e['source']].append((e['target'], label, 'curated', 'outgoing'))
+        adj[e['target']].append((e['source'], label, 'curated', 'incoming'))
+    for e in connections:
+        w = e.get('weight', 1)
+        adj[e['source']].append((e['target'], '', w, 'auto', 'outgoing'))
+        adj[e['target']].append((e['source'], '', w, 'auto', 'incoming'))
+    return adj
 
-def extract_transcript_themes(sources):
-    """Extract key themes from transcript source contexts."""
-    if not sources:
-        return []
-    contexts = [clean_context(s.get('context', '')) for s in sources]
-    # Return the most substantial contexts (longer ones tend to be more informative)
-    contexts.sort(key=len, reverse=True)
-    return contexts[:5]
+def short_name(name):
+    parts = name.split()
+    if len(parts) <= 1:
+        return name
+    return parts[-1]
 
-def generate_summary(person):
-    """Generate a storyline summary for a person."""
-    name = person['id']
-    wiki_desc = person.get('wikipedia_description') or ''
-    wiki_summary = person.get('wikipedia_summary') or ''
-    tier = person.get('tier', 4)
-    category = person.get('category', '')
-    era = person.get('era', '')
-    transcript_sources = person.get('transcript_sources', [])
-    timeline = person.get('timeline', [])
+def first_sentence(text):
+    if not text:
+        return ''
+    m = re.match(r'^(.+?[.!?])\s', text)
+    return m.group(1) if m else text.split('.')[0] + '.'
 
-    name_parts = name.split()
-    if len(name_parts) > 1:
-        last = name_parts[-1]
-        if last in ('Schneerson', 'Epstein', 'Trump', 'Netanyahu', 'Kushner', 'Maxwell',
-                     'Murdoch', 'Zuckerberg', 'Putin', 'Hitler', 'Frank', 'Jackson'):
-            short_name = last
-        elif last == 'Sandberg':
-            short_name = 'Sandberg'
+def dedupe_neighbors(neighbors):
+    seen = set()
+    out = []
+    for entry in neighbors:
+        n = entry[0]
+        if n not in seen:
+            seen.add(n)
+            out.append(entry)
+    return out
+
+def format_connection_list(names, max_count=5):
+    if len(names) == 0:
+        return ''
+    if len(names) == 1:
+        return names[0]
+    if len(names) <= max_count:
+        return ', '.join(names[:-1]) + ' and ' + names[-1]
+    visible = names[:max_count]
+    rest = len(names) - max_count
+    return ', '.join(visible) + f' and {rest} other{"s" if rest > 1 else ""}'
+
+INVERSE_LABELS = {
+    'son-in-law': 'son-in-law of',
+    'father': 'father of',
+    'daughter': 'daughter of',
+    'spouse': 'married to',
+    'married': 'married to',
+    'sought blessing': 'gave blessing to',
+    'sought blessing (per Jiang)': 'gave blessing to',
+    'Chabad member': 'connected to Chabad via',
+    'donor': 'received donations from',
+    'Harvard Chabad': 'connected via Harvard Chabad to',
+    'close allies': 'a close ally of',
+    'associate': 'an associate of',
+    'partner': 'a partner of',
+    'elite family (per email)': 'linked to the',
+    'Cambridge Analytica': 'linked via Cambridge Analytica to',
+    'untouchable by (per Jiang)': 'considers untouchable',
+    'mentor': 'mentored by',
+    'co-authored Clean Break memo': 'co-authored the Clean Break memo with',
+    'advised (Clean Break memo)': 'advised',
+    'Iraq War architect': 'an Iraq War architect alongside',
+    'successor movement': 'the predecessor to the movement of',
+    'converted to Frankism': 'a connection of Frankist convert',
+    'reincarnation (per believers)': 'believed to be a reincarnation of',
+    'alliance': 'in alliance with',
+    'Chabad alliance (per Jiang)': 'allied with Chabad via',
+    'brought to America': 'brought to America by',
+}
+
+DIRECT_LABELS = {
+    'son-in-law': 'father-in-law of',
+    'father': 'father of',
+    'daughter': 'father of',
+    'spouse': 'married to',
+    'married': 'married to',
+    'sought blessing': 'sought the blessing of',
+    'sought blessing (per Jiang)': 'sought the blessing of',
+    'Chabad member': 'a Chabad member connected to',
+    'donor': 'a donor to',
+    'Harvard Chabad': 'connected to',
+    'close allies': 'a close ally of',
+    'associate': 'an associate of',
+    'partner': 'a partner of',
+    'elite family (per email)': 'linked to the',
+    'Cambridge Analytica': 'linked to',
+    'untouchable by (per Jiang)': 'considers untouchable',
+    'mentor': 'mentor to',
+    'co-authored Clean Break memo': 'co-authored the Clean Break memo with',
+    'advised (Clean Break memo)': 'advised',
+    'Iraq War architect': 'an architect of the Iraq War alongside',
+    'successor movement': 'successor to the movement of',
+    'converted to Frankism': 'converted to Frankism, linking to',
+    'reincarnation (per believers)': 'considered a reincarnation by followers of',
+    'alliance': 'in alliance with',
+    'Chabad alliance (per Jiang)': 'allied with Chabad via',
+    'brought to America': 'brought to America by',
+}
+
+def describe_curated_relations(person_id, adj, people_by_id):
+    curated_entries = []
+    for entry in adj.get(person_id, []):
+        if len(entry) >= 4 and entry[2] == 'curated':
+            n, lbl, _, direction = entry[0], entry[1], entry[2], entry[3]
+            curated_entries.append((n, lbl, direction))
+    if not curated_entries:
+        return ''
+    phrases = []
+    for n, lbl, direction in curated_entries:
+        if not lbl:
+            continue
+        name_list = n
+        if direction == 'outgoing':
+            template = DIRECT_LABELS.get(lbl)
         else:
-            short_name = name_parts[-1]
-    else:
-        short_name = name
-
-    parts = []
-
-    # Part 1: Who they are (from Wikipedia)
-    if wiki_desc:
-        parts.append(wiki_desc)
-    elif wiki_summary:
-        # Use first sentence of wiki summary
-        first_sent = wiki_summary.split('.')[0] + '.'
-        parts.append(first_sent)
-
-    # Part 2: Their role in the interview
-    if transcript_sources:
-        contexts = extract_transcript_themes(transcript_sources)
-        mention_count = len(transcript_sources)
-
-        if mention_count >= 5:
-            mention_str = f"a frequently discussed figure ({mention_count} mentions)"
-        elif mention_count >= 3:
-            mention_str = f"discussed multiple times ({mention_count} mentions)"
-        elif mention_count == 2:
-            mention_str = "mentioned twice"
+            template = INVERSE_LABELS.get(lbl)
+        if template:
+            phrases.append(template.format(name_list) if '{' in template else f"{template} {name_list}")
         else:
-            mention_str = "mentioned once"
+            phrases.append(f"connected to {name_list} ({lbl})")
+    return '; '.join(phrases)
 
-        best_context = None
-        for ctx in contexts:
-            if len(ctx) > 60 and not ctx.startswith('>>'):
-                best_context = ctx
-                break
-        if not best_context and contexts:
-            best_context = contexts[0]
+def generate_summary(person_id, adj, people_by_id):
+    p = people_by_id[person_id]
+    wiki_desc = p.get('wikipedia_description') or ''
+    wiki_summary = p.get('wikipedia_summary') or ''
+    tier = p.get('tier', 4)
+    category = p.get('category', '')
+    sn = short_name(person_id)
 
-        if best_context:
-            best_context = best_context.rstrip('.')
-            if len(best_context) > 180:
-                best_context = best_context[:177] + '...'
+    sentences = []
 
-            parts.append(f"In the interview, {short_name} is {mention_str}. The discussion touches on: \"{best_context}\"")
+    intro = first_sentence(wiki_summary) if wiki_summary else wiki_desc
+    if not intro:
+        intro = person_id
+    sentences.append(intro)
+
+    all_neighbors = dedupe_neighbors(adj.get(person_id, []))
+    curated_desc = describe_curated_relations(person_id, adj, people_by_id)
+
+    auto_neighbors = []
+    for entry in all_neighbors:
+        if len(entry) >= 4 and entry[2] == 'auto':
+            auto_neighbors.append((entry[0], entry[3] if len(entry) > 3 else 1))
+        elif len(entry) == 3 and entry[2] == 'auto':
+            auto_neighbors.append((entry[0], 1))
+    auto_neighbors.sort(key=lambda x: -x[1])
+    top_auto = [n for n, w in auto_neighbors[:8]]
+
+    connection_parts = []
+    if curated_desc:
+        connection_parts.append(curated_desc)
+    if top_auto:
+        auto_list = format_connection_list(top_auto)
+        if curated_desc:
+            connection_parts.append(f"frequently co-mentioned with {auto_list}")
         else:
-            parts.append(f"In the interview, {short_name} is {mention_str}.")
-    else:
-        # No transcript sources - describe based on what we know
-        if tier == 1:
-            parts.append(f"Listed as a top-tier power figure in the interview's hierarchy, though not directly named in the transcript.")
-        elif tier == 2:
-            parts.append(f"Positioned as a key player in the interview's power network, though not explicitly named in the transcript.")
-        elif tier == 3:
-            parts.append(f"Referenced as a secondary figure in the interview's framework, though not directly quoted in the transcript.")
-        else:
-            parts.append(f"Placed in the periphery of the interview's power map, though not explicitly named in the transcript.")
+            connection_parts.append(f"closely associated with {auto_list} in the interview")
+    if connection_parts:
+        joined = '; '.join(connection_parts)
+        first_word = joined.split(' ')[0] if joined else ''
+        starts_with_verb = first_word.lower() in ('gave', 'sought', 'brought', 'converted', 'considered',
+                                                     'mentored', 'advised', 'received', 'believes', 'considers')
+        prefix = sn + ' ' if starts_with_verb else sn + ' is '
+        sentences.append(prefix + joined + '.' if joined else '')
 
-    # Part 3: Tier/context significance
-    tier_labels = {1: 'the highest tier of influence', 2: 'the second tier of power',
-                   3: 'a secondary tier', 4: 'the peripheral tier'}
-    tier_label = tier_labels.get(tier, 'an unspecified tier')
-
+    tier_labels = {1: 'the top tier of the power hierarchy',
+                   2: 'the second tier of influence',
+                   3: 'a secondary tier',
+                   4: 'the periphery of the network'}
     if category:
-        parts.append(f"Classified under {category}, placed in {tier_label} of the interview's power hierarchy.")
+        sentences.append(f"Classified under {category}, {sn} sits in {tier_labels.get(tier, 'an unspecified tier')}.")
 
-    return ' '.join(parts)
+    transcript_count = len(p.get('transcript_sources', []))
+    if transcript_count >= 5:
+        sentences.append(f"A frequently discussed figure in the interview with {transcript_count} transcript references.")
+    elif transcript_count >= 2:
+        sentences.append(f"Mentioned {transcript_count} times in the interview.")
+    elif transcript_count == 1:
+        sentences.append(f"Mentioned once in the interview.")
+    else:
+        sentences.append(f"Not directly named in the transcript, but included in the interview's power framework.")
+
+    return ' '.join(sentences)
 
 def main():
-    data = load_data()
+    data = load_json('people_data.json')
+    curated = load_json('curated_edges.json')
+    connections = load_json('connections.json')
+    adj = build_adjacency(curated, connections)
+    people_by_id = {p['id']: p for p in data}
+
     updated = 0
     for p in data:
-        summary = generate_summary(p)
-        if summary and summary != p.get('storyline_summary'):
+        summary = generate_summary(p['id'], adj, people_by_id)
+        if summary != p.get('storyline_summary'):
             p['storyline_summary'] = summary
             updated += 1
 
-    with open(os.path.join(HERE, "people_data.json"), "w", encoding="utf-8") as f:
+    with open(os.path.join(HERE, 'people_data.json'), 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
     print(f"[storyline] Generated summaries for {updated} people")
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
