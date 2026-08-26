@@ -2,7 +2,12 @@
   "graph": [
     {
       "id": "Rabbi Menachem Mendel Schneerson",
-      "aliases": ["Menachem Mendel Schneerson", "Schneerson", "The Rebbe", "Rebbe"],
+      "aliases": [
+        "Menachem Mendel Schneerson",
+        "Schneerson",
+        "The Rebbe",
+        "Rebbe"
+      ],
       "tier": 1,
       "category": "Religious",
       "era": "Contemporary",
@@ -12,7 +17,11 @@
     },
     {
       "id": "Donald Trump",
-      "aliases": ["Trump", "Donald Trump", "Donald J. Trump"],
+      "aliases": [
+        "Trump",
+        "Donald Trump",
+        "Donald J. Trump"
+      ],
       "tier": 1,
       "category": "US Politics",
       "era": "Contemporary",
@@ -22,7 +31,12 @@
     },
     {
       "id": "Benjamin Netanyahu",
-      "aliases": ["Netanyahu", "Benjamin Netanyahu", "Bibi Netanyahu", "Bibi"],
+      "aliases": [
+        "Netanyahu",
+        "Benjamin Netanyahu",
+        "Bibi Netanyahu",
+        "Bibi"
+      ],
       "tier": 1,
       "category": "Israel",
       "era": "Contemporary",
@@ -32,7 +46,10 @@
     },
     {
       "id": "Mark Zuckerberg",
-      "aliases": ["Zuckerberg", "Mark Zuckerberg"],
+      "aliases": [
+        "Zuckerberg",
+        "Mark Zuckerberg"
+      ],
       "tier": 1,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -42,7 +59,11 @@
     },
     {
       "id": "Jeffrey Epstein",
-      "aliases": ["Epstein", "Jeffrey Epstein", "Jeff"],
+      "aliases": [
+        "Epstein",
+        "Jeffrey Epstein",
+        "Jeff"
+      ],
       "tier": 1,
       "category": "Epstein Network",
       "era": "Contemporary",
@@ -52,7 +73,11 @@
     },
     {
       "id": "Jared Kushner",
-      "aliases": ["Kushner", "Jared Kushner", "Jared"],
+      "aliases": [
+        "Kushner",
+        "Jared Kushner",
+        "Jared"
+      ],
       "tier": 2,
       "category": "US Politics",
       "era": "Contemporary",
@@ -62,7 +87,10 @@
     },
     {
       "id": "Vladimir Putin",
-      "aliases": ["Putin", "Vladimir Putin"],
+      "aliases": [
+        "Putin",
+        "Vladimir Putin"
+      ],
       "tier": 2,
       "category": "World Leaders",
       "era": "Contemporary",
@@ -72,7 +100,10 @@
     },
     {
       "id": "Rupert Murdoch",
-      "aliases": ["Murdoch", "Rupert Murdoch"],
+      "aliases": [
+        "Murdoch",
+        "Rupert Murdoch"
+      ],
       "tier": 2,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -82,7 +113,12 @@
     },
     {
       "id": "Sheldon Adelson",
-      "aliases": ["Adelson", "Sheldon Adelson", "Adlesen", "Sheldon"],
+      "aliases": [
+        "Adelson",
+        "Sheldon Adelson",
+        "Adlesen",
+        "Sheldon"
+      ],
       "tier": 2,
       "category": "Financial",
       "era": "Contemporary",
@@ -92,7 +128,10 @@
     },
     {
       "id": "Alan Dershowitz",
-      "aliases": ["Dershowitz", "Alan Dershowitz"],
+      "aliases": [
+        "Dershowitz",
+        "Alan Dershowitz"
+      ],
       "tier": 2,
       "category": "Neoconservative",
       "era": "Contemporary",
@@ -102,7 +141,10 @@
     },
     {
       "id": "Jacob Frank",
-      "aliases": ["Frank", "Jacob Frank"],
+      "aliases": [
+        "Frank",
+        "Jacob Frank"
+      ],
       "tier": 2,
       "category": "Religious",
       "era": "18th Century",
@@ -112,7 +154,11 @@
     },
     {
       "id": "Ghislaine Maxwell",
-      "aliases": ["Ghislaine", "Ghislaine Maxwell", "Maxwell"],
+      "aliases": [
+        "Ghislaine",
+        "Ghislaine Maxwell",
+        "Maxwell"
+      ],
       "tier": 2,
       "category": "Epstein Network",
       "era": "Contemporary",
@@ -122,7 +168,9 @@
     },
     {
       "id": "Robert Maxwell",
-      "aliases": ["Robert Maxwell"],
+      "aliases": [
+        "Robert Maxwell"
+      ],
       "tier": 2,
       "category": "Epstein Network",
       "era": "Contemporary",
@@ -132,7 +180,9 @@
     },
     {
       "id": "Charles Kushner",
-      "aliases": ["Charles Kushner"],
+      "aliases": [
+        "Charles Kushner"
+      ],
       "tier": 2,
       "category": "US Politics",
       "era": "Contemporary",
@@ -142,7 +192,10 @@
     },
     {
       "id": "Miriam Adelson",
-      "aliases": ["Miriam Adelson", "Miriam"],
+      "aliases": [
+        "Miriam Adelson",
+        "Miriam"
+      ],
       "tier": 2,
       "category": "Financial",
       "era": "Contemporary",
@@ -152,7 +205,10 @@
     },
     {
       "id": "Jeff Bezos",
-      "aliases": ["Bezos", "Jeff Bezos"],
+      "aliases": [
+        "Bezos",
+        "Jeff Bezos"
+      ],
       "tier": 2,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -162,7 +218,11 @@
     },
     {
       "id": "Sabbatai Zevi",
-      "aliases": ["Zevi", "Sabbatai Zevi", "Sabbetai Zevi"],
+      "aliases": [
+        "Zevi",
+        "Sabbatai Zevi",
+        "Sabbetai Zevi"
+      ],
       "tier": 3,
       "category": "Religious",
       "era": "17th Century",
@@ -172,17 +232,24 @@
     },
     {
       "id": "Henry Jackson",
-      "aliases": ["Henry Jackson", "Scoop Jackson", "Henry \"Scoop\" Jackson"],
+      "aliases": [
+        "Henry Jackson",
+        "Scoop Jackson",
+        "Henry \"Scoop\" Jackson"
+      ],
       "tier": 3,
       "category": "Neoconservative",
       "era": "Contemporary",
       "birth_year": 1912,
       "death_year": 1983,
-      "wikipedia_title": "Henry Jackson"
+      "wikipedia_title": "Henry M. Jackson"
     },
     {
       "id": "Paul Wolfowitz",
-      "aliases": ["Wolfowitz", "Paul Wolfowitz"],
+      "aliases": [
+        "Wolfowitz",
+        "Paul Wolfowitz"
+      ],
       "tier": 3,
       "category": "Neoconservative",
       "era": "Contemporary",
@@ -192,7 +259,10 @@
     },
     {
       "id": "Richard Perle",
-      "aliases": ["Perle", "Richard Perle"],
+      "aliases": [
+        "Perle",
+        "Richard Perle"
+      ],
       "tier": 3,
       "category": "Neoconservative",
       "era": "Contemporary",
@@ -202,7 +272,10 @@
     },
     {
       "id": "Douglas Feith",
-      "aliases": ["Feith", "Douglas Feith"],
+      "aliases": [
+        "Feith",
+        "Douglas Feith"
+      ],
       "tier": 3,
       "category": "Neoconservative",
       "era": "Contemporary",
@@ -212,7 +285,10 @@
     },
     {
       "id": "Bill Clinton",
-      "aliases": ["Clinton", "Bill Clinton"],
+      "aliases": [
+        "Clinton",
+        "Bill Clinton"
+      ],
       "tier": 3,
       "category": "US Politics",
       "era": "Contemporary",
@@ -222,7 +298,11 @@
     },
     {
       "id": "Ivanka Trump",
-      "aliases": ["Ivanka", "Ivanka Trump", "Ivanka Kushner"],
+      "aliases": [
+        "Ivanka",
+        "Ivanka Trump",
+        "Ivanka Kushner"
+      ],
       "tier": 3,
       "category": "US Politics",
       "era": "Contemporary",
@@ -232,7 +312,10 @@
     },
     {
       "id": "Sara Netanyahu",
-      "aliases": ["Sara Netanyahu", "Sara"],
+      "aliases": [
+        "Sara Netanyahu",
+        "Sara"
+      ],
       "tier": 3,
       "category": "Israel",
       "era": "Contemporary",
@@ -242,17 +325,25 @@
     },
     {
       "id": "Elena Zhukova",
-      "aliases": ["Elena Zukova", "Elena Zhukova", "Elena"],
+      "aliases": [
+        "Elena Zukova",
+        "Elena Zhukova",
+        "Elena"
+      ],
       "tier": 3,
       "category": "Tech/Media",
       "era": "Contemporary",
-      "birth_year": null,
+      "birth_year": 1957,
       "death_year": null,
-      "wikipedia_title": "Yelena Zhukova"
+      "wikipedia_title": null
     },
     {
       "id": "Larry Summers",
-      "aliases": ["Summers", "Larry Summers", "Lawrence Summers"],
+      "aliases": [
+        "Summers",
+        "Larry Summers",
+        "Lawrence Summers"
+      ],
       "tier": 3,
       "category": "Neoconservative",
       "era": "Contemporary",
@@ -262,7 +353,10 @@
     },
     {
       "id": "Louis Brandeis",
-      "aliases": ["Brandeis", "Louis Brandeis"],
+      "aliases": [
+        "Brandeis",
+        "Louis Brandeis"
+      ],
       "tier": 3,
       "category": "Neoconservative",
       "era": "Modern",
@@ -272,7 +366,10 @@
     },
     {
       "id": "David Rockefeller",
-      "aliases": ["Rockefeller", "David Rockefeller"],
+      "aliases": [
+        "Rockefeller",
+        "David Rockefeller"
+      ],
       "tier": 3,
       "category": "Financial",
       "era": "Contemporary",
@@ -282,7 +379,10 @@
     },
     {
       "id": "Natalie Harp",
-      "aliases": ["Natalie Harp", "Harp"],
+      "aliases": [
+        "Natalie Harp",
+        "Harp"
+      ],
       "tier": 3,
       "category": "US Politics",
       "era": "Contemporary",
@@ -292,7 +392,10 @@
     },
     {
       "id": "Larry Page",
-      "aliases": ["Larry Page", "Page"],
+      "aliases": [
+        "Larry Page",
+        "Page"
+      ],
       "tier": 3,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -302,7 +405,10 @@
     },
     {
       "id": "Sheryl Sandberg",
-      "aliases": ["Sheryl Sandberg", "Sandberg"],
+      "aliases": [
+        "Sheryl Sandberg",
+        "Sandberg"
+      ],
       "tier": 3,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -312,7 +418,10 @@
     },
     {
       "id": "Peter Thiel",
-      "aliases": ["Peter Thiel", "Thiel"],
+      "aliases": [
+        "Peter Thiel",
+        "Thiel"
+      ],
       "tier": 3,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -322,7 +431,10 @@
     },
     {
       "id": "Ben Shapiro",
-      "aliases": ["Ben Shapiro", "Shapiro"],
+      "aliases": [
+        "Ben Shapiro",
+        "Shapiro"
+      ],
       "tier": 3,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -332,7 +444,10 @@
     },
     {
       "id": "Natalie Portman",
-      "aliases": ["Natalie Portman", "Portman"],
+      "aliases": [
+        "Natalie Portman",
+        "Portman"
+      ],
       "tier": 3,
       "category": "Other",
       "era": "Contemporary",
@@ -342,7 +457,11 @@
     },
     {
       "id": "George Bush",
-      "aliases": ["Bush", "George Bush", "George W. Bush"],
+      "aliases": [
+        "Bush",
+        "George Bush",
+        "George W. Bush"
+      ],
       "tier": 4,
       "category": "US Politics",
       "era": "Contemporary",
@@ -352,7 +471,11 @@
     },
     {
       "id": "Wesley Clark",
-      "aliases": ["Wesley Clark", "Clark", "General Clark"],
+      "aliases": [
+        "Wesley Clark",
+        "Clark",
+        "General Clark"
+      ],
       "tier": 4,
       "category": "US Politics",
       "era": "Contemporary",
@@ -362,7 +485,10 @@
     },
     {
       "id": "Steve Bannon",
-      "aliases": ["Bannon", "Steve Bannon"],
+      "aliases": [
+        "Bannon",
+        "Steve Bannon"
+      ],
       "tier": 4,
       "category": "US Politics",
       "era": "Contemporary",
@@ -372,7 +498,10 @@
     },
     {
       "id": "Chris Christie",
-      "aliases": ["Christie", "Chris Christie"],
+      "aliases": [
+        "Christie",
+        "Chris Christie"
+      ],
       "tier": 4,
       "category": "US Politics",
       "era": "Contemporary",
@@ -382,7 +511,10 @@
     },
     {
       "id": "Laura Loomer",
-      "aliases": ["Laura Loomer", "Loomer"],
+      "aliases": [
+        "Laura Loomer",
+        "Loomer"
+      ],
       "tier": 4,
       "category": "US Politics",
       "era": "Contemporary",
@@ -392,7 +524,10 @@
     },
     {
       "id": "Sean Hannity",
-      "aliases": ["Hannity", "Sean Hannity"],
+      "aliases": [
+        "Hannity",
+        "Sean Hannity"
+      ],
       "tier": 4,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -402,7 +537,11 @@
     },
     {
       "id": "Bernie Sanders",
-      "aliases": ["Sanders", "Bernie Sanders", "Bernard Sanders"],
+      "aliases": [
+        "Sanders",
+        "Bernie Sanders",
+        "Bernard Sanders"
+      ],
       "tier": 4,
       "category": "US Politics",
       "era": "Contemporary",
@@ -412,7 +551,10 @@
     },
     {
       "id": "Joe Biden",
-      "aliases": ["Biden", "Joe Biden"],
+      "aliases": [
+        "Biden",
+        "Joe Biden"
+      ],
       "tier": 4,
       "category": "US Politics",
       "era": "Contemporary",
@@ -422,7 +564,11 @@
     },
     {
       "id": "Kamala Harris",
-      "aliases": ["Kamala", "Kamala Harris", "Harris"],
+      "aliases": [
+        "Kamala",
+        "Kamala Harris",
+        "Harris"
+      ],
       "tier": 4,
       "category": "US Politics",
       "era": "Contemporary",
@@ -432,7 +578,10 @@
     },
     {
       "id": "Ariel Sharon",
-      "aliases": ["Sharon", "Ariel Sharon"],
+      "aliases": [
+        "Sharon",
+        "Ariel Sharon"
+      ],
       "tier": 4,
       "category": "Israel",
       "era": "Contemporary",
@@ -442,7 +591,10 @@
     },
     {
       "id": "Yasser Arafat",
-      "aliases": ["Arafat", "Yasser Arafat"],
+      "aliases": [
+        "Arafat",
+        "Yasser Arafat"
+      ],
       "tier": 4,
       "category": "Israel",
       "era": "Contemporary",
@@ -452,7 +604,10 @@
     },
     {
       "id": "Jimmy Kimmel",
-      "aliases": ["Kimmel", "Jimmy Kimmel"],
+      "aliases": [
+        "Kimmel",
+        "Jimmy Kimmel"
+      ],
       "tier": 4,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -462,7 +617,10 @@
     },
     {
       "id": "Malcolm Gladwell",
-      "aliases": ["Gladwell", "Malcolm Gladwell"],
+      "aliases": [
+        "Gladwell",
+        "Malcolm Gladwell"
+      ],
       "tier": 4,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -472,7 +630,10 @@
     },
     {
       "id": "Amy Goodman",
-      "aliases": ["Amy Goodman", "Goodman"],
+      "aliases": [
+        "Amy Goodman",
+        "Goodman"
+      ],
       "tier": 4,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -482,7 +643,10 @@
     },
     {
       "id": "Jack Ma",
-      "aliases": ["Jack Ma", "Ma"],
+      "aliases": [
+        "Jack Ma",
+        "Ma"
+      ],
       "tier": 4,
       "category": "Tech/Media",
       "era": "Contemporary",
@@ -492,7 +656,10 @@
     },
     {
       "id": "Xi Jinping",
-      "aliases": ["Xi", "Xi Jinping"],
+      "aliases": [
+        "Xi",
+        "Xi Jinping"
+      ],
       "tier": 4,
       "category": "World Leaders",
       "era": "Contemporary",
@@ -502,7 +669,10 @@
     },
     {
       "id": "Mao Zedong",
-      "aliases": ["Mao", "Mao Zedong"],
+      "aliases": [
+        "Mao",
+        "Mao Zedong"
+      ],
       "tier": 4,
       "category": "World Leaders",
       "era": "Contemporary",
@@ -512,7 +682,10 @@
     },
     {
       "id": "Deng Xiaoping",
-      "aliases": ["Deng", "Deng Xiaoping"],
+      "aliases": [
+        "Deng",
+        "Deng Xiaoping"
+      ],
       "tier": 4,
       "category": "World Leaders",
       "era": "Contemporary",
@@ -522,7 +695,10 @@
     },
     {
       "id": "Nicolas Maduro",
-      "aliases": ["Maduro", "Nicolas Maduro"],
+      "aliases": [
+        "Maduro",
+        "Nicolas Maduro"
+      ],
       "tier": 4,
       "category": "World Leaders",
       "era": "Contemporary",
@@ -532,7 +708,10 @@
     },
     {
       "id": "Saddam Hussein",
-      "aliases": ["Saddam", "Saddam Hussein"],
+      "aliases": [
+        "Saddam",
+        "Saddam Hussein"
+      ],
       "tier": 4,
       "category": "World Leaders",
       "era": "Contemporary",
@@ -542,7 +721,10 @@
     },
     {
       "id": "Adolf Hitler",
-      "aliases": ["Hitler", "Adolf Hitler"],
+      "aliases": [
+        "Hitler",
+        "Adolf Hitler"
+      ],
       "tier": 4,
       "category": "World Leaders",
       "era": "Contemporary",
@@ -552,7 +734,10 @@
     },
     {
       "id": "Volodymyr Zelensky",
-      "aliases": ["Zelensky", "Volodymyr Zelensky"],
+      "aliases": [
+        "Zelensky",
+        "Volodymyr Zelensky"
+      ],
       "tier": 4,
       "category": "World Leaders",
       "era": "Contemporary",
@@ -562,7 +747,11 @@
     },
     {
       "id": "Ayatollah Khamenei",
-      "aliases": ["Khamenei", "Ayatollah Khamenei", "Ali Khamenei"],
+      "aliases": [
+        "Khamenei",
+        "Ayatollah Khamenei",
+        "Ali Khamenei"
+      ],
       "tier": 4,
       "category": "World Leaders",
       "era": "Contemporary",
@@ -572,7 +761,10 @@
     },
     {
       "id": "Dan Bilzerian",
-      "aliases": ["Dan Bilzerian", "Bilzerian"],
+      "aliases": [
+        "Dan Bilzerian",
+        "Bilzerian"
+      ],
       "tier": 4,
       "category": "Other",
       "era": "Contemporary",
@@ -582,7 +774,10 @@
     },
     {
       "id": "Randy Fine",
-      "aliases": ["Randy Fine", "Fine"],
+      "aliases": [
+        "Randy Fine",
+        "Fine"
+      ],
       "tier": 4,
       "category": "Other",
       "era": "Contemporary",
@@ -592,7 +787,10 @@
     },
     {
       "id": "Adam Curtis",
-      "aliases": ["Adam Curtis", "Curtis"],
+      "aliases": [
+        "Adam Curtis",
+        "Curtis"
+      ],
       "tier": 4,
       "category": "Other",
       "era": "Contemporary",

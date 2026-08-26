@@ -530,16 +530,12 @@
     "wikipedia_description": "Polish-Jewish religious leader (1726–1790)",
     "timeline": [
       {
-        "year": 1626,
-        "event": "Messiah Sabbatai Zevi (1626–1676) and also of the biblical"
-      },
-      {
         "year": 1726,
-        "event": "Born in Korolivka, Borshchiv Raion"
+        "event": "Born in Korolivka, Podolia (now Ukraine)"
       },
       {
         "year": 1791,
-        "event": "Died in Offenbach am Main, Isenburg-Birstein#Princes of Isenburg-Birstein (1744–1806)"
+        "event": "Died in Offenbach am Main, Germany"
       }
     ],
     "transcript_sources": [
@@ -792,19 +788,32 @@
     "death_year": 1983,
     "image": null,
     "wikipedia_url": "https://en.wikipedia.org/wiki/Henry_Jackson",
-    "wikipedia_summary": "Henry Jackson may refer to:",
-    "wikipedia_description": "Topics referred to by the same term",
+    "wikipedia_summary": "Henry Martin \"Scoop\" Jackson (May 31, 1912 – September 1, 1983) was an American politician who served as a U.S. Representative (1941–1953) and U.S. Senator (1953–1983) from the state of Washington. A Cold War liberal and neoconservative icon, he was known for his strong anti-communist stance and sponsorship of the Jackson–Vanik Amendment, which tied U.S. trade relations to emigration freedoms in Soviet-bloc countries.",
+    "wikipedia_description": "U.S. Senator from Washington (1912–1983)",
     "timeline": [
       {
         "year": 1912,
-        "event": "Born"
+        "event": "Born May 31 in Everett, Washington"
+      },
+      {
+        "year": 1941,
+        "event": "Elected to the U.S. House of Representatives"
+      },
+      {
+        "year": 1953,
+        "event": "Elected to the U.S. Senate (served until death)"
+      },
+      {
+        "year": 1974,
+        "event": "Sponsored the Jackson–Vanik Amendment"
       },
       {
         "year": 1983,
-        "event": "Died"
+        "event": "Died September 1 in Everett, Washington"
       }
     ],
-    "transcript_sources": []
+    "transcript_sources": [],
+    "wikipedia_title": "Henry M. Jackson"
   },
   {
     "id": "Paul Wolfowitz",
@@ -971,27 +980,28 @@
     "tier": 3,
     "category": "Tech/Media",
     "era": "Contemporary",
-    "birth_year": 1906,
-    "death_year": 1991,
+    "birth_year": 1957,
+    "death_year": null,
     "image": null,
     "wikipedia_url": "https://en.wikipedia.org/wiki/Yelena_Zhukova",
-    "wikipedia_summary": "Yelena Pavlovna Zhukova was a Soviet and Russian painter, a member of the Leningrad Union of Artists, who lived and worked in Leningrad. She was regarded as one of representatives of the Leningrad School of Painting, most famous for her landscape paintings and portraits of various Russian artists such as Kuzma Petrov-Vodkin, Yaroslav Nikolaev (1945) and Mikhail Nesterov (1936).",
-    "wikipedia_description": "Russian artist (1906–1991)",
+    "wikipedia_summary": "Elena Zhukova is a retired molecular biologist who left the Soviet Union after its collapse in 1991 and settled in the United States. She married media mogul Rupert Murdoch on 1 June 2024 at his Bel Air estate in California. She was previously married to billionaire investor Peter Chernin.",
+    "wikipedia_description": "Retired molecular biologist; wife of Rupert Murdoch",
     "timeline": [
       {
-        "year": 1906,
-        "event": "Born in Saint Petersburg, Russian Empire"
-      },
-      {
-        "year": 1945,
-        "event": "Yaroslav Nikolaev (1945) and Mikhail Nesterov (1936)."
+        "year": 1957,
+        "event": "Born in the Soviet Union (reported age 67 in 2024)"
       },
       {
         "year": 1991,
-        "event": "Died in Saint Petersburg"
+        "event": "Left Russia after the Soviet collapse; lived in the United States thereafter"
+      },
+      {
+        "year": 2024,
+        "event": "Married Rupert Murdoch on 1 June at his Bel Air estate"
       }
     ],
-    "transcript_sources": []
+    "transcript_sources": [],
+    "wikipedia_title": null
   },
   {
     "id": "Larry Summers",

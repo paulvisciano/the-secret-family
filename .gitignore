@@ -5,3 +5,4 @@ test-results/
 wikipedia_cache/
 .DS_Store
 node_modules/
+.vercel
