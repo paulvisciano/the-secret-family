@@ -59,7 +59,7 @@ def format_connection_list(names, max_count=5):
 INVERSE_LABELS = {
     'son-in-law': 'son-in-law of',
     'father': 'father of',
-    'daughter': 'daughter of',
+    'daughter': 'father of',
     'spouse': 'married to',
     'married': 'married to',
     'sought blessing': 'gave blessing to',
@@ -77,7 +77,7 @@ INVERSE_LABELS = {
     'co-authored Clean Break memo': 'co-authored the Clean Break memo with',
     'advised (Clean Break memo)': 'advised',
     'Iraq War architect': 'an Iraq War architect alongside',
-    'successor movement': 'the predecessor to the movement of',
+    'successor movement': 'successor to the movement of',
     'converted to Frankism': 'a connection of Frankist convert',
     'reincarnation (per believers)': 'believed to be a reincarnation of',
     'alliance': 'in alliance with',
@@ -87,8 +87,8 @@ INVERSE_LABELS = {
 
 DIRECT_LABELS = {
     'son-in-law': 'father-in-law of',
-    'father': 'father of',
-    'daughter': 'father of',
+    'father': 'son of',
+    'daughter': 'daughter of',
     'spouse': 'married to',
     'married': 'married to',
     'sought blessing': 'sought the blessing of',
@@ -106,12 +106,12 @@ DIRECT_LABELS = {
     'co-authored Clean Break memo': 'co-authored the Clean Break memo with',
     'advised (Clean Break memo)': 'advised',
     'Iraq War architect': 'an architect of the Iraq War alongside',
-    'successor movement': 'successor to the movement of',
+    'successor movement': 'predecessor to the movement of',
     'converted to Frankism': 'converted to Frankism, linking to',
     'reincarnation (per believers)': 'considered a reincarnation by followers of',
     'alliance': 'in alliance with',
     'Chabad alliance (per Jiang)': 'allied with Chabad via',
-    'brought to America': 'brought to America by',
+    'brought to America': 'helped bring to America',
 }
 
 def describe_curated_relations(person_id, adj, people_by_id):
@@ -177,7 +177,8 @@ def generate_summary(person_id, adj, people_by_id):
         joined = '; '.join(connection_parts)
         first_word = joined.split(' ')[0] if joined else ''
         starts_with_verb = first_word.lower() in ('gave', 'sought', 'brought', 'converted', 'considered',
-                                                     'mentored', 'advised', 'received', 'believes', 'considers')
+                                                     'mentored', 'advised', 'received', 'believes', 'considers',
+                                                     'helped')
         prefix = sn + ' ' if starts_with_verb else sn + ' is '
         sentences.append(prefix + joined + '.' if joined else '')
 
