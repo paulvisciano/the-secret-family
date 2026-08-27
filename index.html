@@ -284,6 +284,7 @@
     margin-bottom: 16px;
   }
   #side-panel .wiki-content p:last-child { margin-bottom: 0; }
+  #side-panel .wiki-content .wiki-link { margin-top: 14px; }
   #side-panel .wiki-content p:first-child::first-letter {
     font-family: var(--serif-font); font-size: 48px; line-height: 0.9; float: left;
     padding: 4px 8px 0 0; color: var(--accent); font-weight: 400;
@@ -1037,6 +1038,9 @@ function openPanel(id) {
   } else {
     sumHtml = '<div class="sp-empty">No summary available</div>';
   }
+  if (p.wikipedia_url) {
+    sumHtml += `<a class="wiki-link" href="${p.wikipedia_url}" target="_blank" rel="noopener">Read more on Wikipedia <span class="wiki-link-arrow">&rarr;</span></a>`;
+  }
 
   // Evidence cards (transcript sources)
   let srcHtml;
@@ -1090,7 +1094,6 @@ function openPanel(id) {
     `<section class="section"><h3 class="section-label">Historical Timeline &amp; Storyline</h3>${tlHtml}</section>` +
     `<section class="section"><h3 class="section-label">Wikipedia Summary</h3><div class="wiki-content">${sumHtml}</div></section>` +
     `<section class="section"><h3 class="section-label">Transcript Sources</h3>${srcHtml}</section>` +
-    (p.wikipedia_url ? `<div class="dossier-footer"><a class="wiki-link" href="${p.wikipedia_url}" target="_blank" rel="noopener">Read Full Article <span class="wiki-link-arrow">&rarr;</span></a></div>` : '') +
     `<div class="dossier-stamp">The Secret Family · Intelligence Archive</div>`;
   panel.classList.add('open');
 }
