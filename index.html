@@ -938,6 +938,7 @@ function reset() {
   edge.classed('dimmed', false).classed('highlighted', false);
   edgeLabel.classed('show', false);
   closePanel();
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
 }
 
 node.on('click', function(event, d) {
@@ -946,6 +947,7 @@ node.on('click', function(event, d) {
   selectedId = d.id;
   highlight(d.id);
   openPanel(d.id);
+  history.replaceState(null, '', '#' + encodeURIComponent(d.id));
 });
 
 let didPan = false;
@@ -1146,6 +1148,7 @@ function selectFromSearch(id) {
   selectedId = id;
   highlight(id);
   openPanel(id);
+  history.replaceState(null, '', '#' + encodeURIComponent(id));
   // Pan to node
   const d = simNodes.find(n => n.id === id);
   if (d) {
@@ -1376,6 +1379,42 @@ document.addEventListener('click', (e) => {
   setTimeout(() => { loader.classList.add('hide'); }, 100);
   setTimeout(() => { loader.style.display = 'none'; }, 700);
 }
+
+// ---- URL hash deep-linking ----
+function openPersonFromHash() {
+  const hash = decodeURIComponent(location.hash.slice(1));
+  if (!hash) { reset(); return; }
+  const p = peopleById.get(hash);
+  if (p) {
+    selectedId = hash;
+    highlight(hash);
+    openPanel(hash);
+    // Pan to node
+    const d = simNodes.find(n => n.id === hash);
+    if (d) {
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      simNodes.forEach(n => {
+        const r = nodeRadius(n) + 12;
+        minX = Math.min(minX, n.x - r); maxX = Math.max(maxX, n.x + r);
+        minY = Math.min(minY, n.y - r); maxY = Math.max(maxY, n.y + r);
+      });
+      const bw = maxX - minX, bh = maxY - minY;
+      const pad = 40;
+      const scale = Math.min(W() / (bw + pad * 2), H() / (bh + pad * 2), 1);
+      const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
+      const focusScale = Math.max(scale, 0.6);
+      const tx = W() / 2 - focusScale * d.x;
+      const ty = H() / 2 - focusScale * d.y;
+      svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(focusScale));
+    }
+  }
+}
+
+// Deep-link on initial load
+openPersonFromHash();
+
+// Back/forward buttons
+window.addEventListener('hashchange', openPersonFromHash);
 </script>
 </body>
 </html>
